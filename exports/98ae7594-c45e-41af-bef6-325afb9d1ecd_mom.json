@@ -1,0 +1,114 @@
+{
+  "job_id": "98ae7594-c45e-41af-bef6-325afb9d1ecd",
+  "filename": "api_test.wav",
+  "meeting_title": "Meeting Record - Api test",
+  "summary": " System 1 will handle deployment and 2 will manage API integration by tomorrow . Person 1 will manage the deployment and Person 2 will handle API integration . System design and action items will be discussed today .",
+  "statistics": {
+    "total_audio_duration_seconds": 3.0,
+    "total_spoken_duration_seconds": 2.91,
+    "total_speakers_count": 1,
+    "total_segments_count": 4,
+    "speaker_statistics": [
+      {
+        "speaker": "Person 1",
+        "speaking_duration_seconds": 2.91,
+        "speaking_duration_formatted": "00:02",
+        "speaking_proportion_percent": 100.0,
+        "segment_count": 4,
+        "primary_language": "English",
+        "languages": [
+          "English",
+          "Hindi",
+          "Odia"
+        ]
+      }
+    ]
+  },
+  "key_discussion_points": [
+    {
+      "topic": "Project Architecture & Requirements",
+      "points": [
+        "Person 1 (English): Welcome everyone to today's project review meeting. We will discuss system design and action items."
+      ]
+    },
+    {
+      "topic": "Implementation & Integration",
+      "points": [
+        "Person 1 (English): Agreed. Person 1 will handle the deployment and Person 2 will manage API integration by tomorrow."
+      ]
+    },
+    {
+      "topic": "Testing & Documentation",
+      "points": [
+        "Person 1 (Odia): ଆମର ଏହି ପ୍ରୋଜେକ୍ଟରେ ଓଡ଼ିଆ, ହିନ୍ଦୀ ଏବଂ ଇଂରାଜୀ ଭାଷାକୁ ସପୋର୍ଟ କରାଯିବ। Action items fulfill କରିବା।"
+      ]
+    },
+    {
+      "topic": "General Discussion",
+      "points": [
+        "Person 1: हम आज वॉइस पाइपलाइन और मल्टीलिंगुअल सपोर्ट पर चर्चा करेंगे। सभी मॉड्यूल्स तैयार हैं।"
+      ]
+    }
+  ],
+  "decisions": [
+    {
+      "speaker": "Person 1",
+      "timestamp": "00:02",
+      "decision": "Agreed. Person 1 will handle the deployment and Person 2 will manage API integration by tomorrow."
+    }
+  ],
+  "action_items": [
+    {
+      "assignee": "Person 1",
+      "task": "Welcome everyone to today's project review meeting. We will discuss system design and action items.",
+      "status": "Pending",
+      "timestamp": "00:00"
+    },
+    {
+      "assignee": "Person 1",
+      "task": "ଆମର ଏହି ପ୍ରୋଜେକ୍ଟରେ ଓଡ଼ିଆ, ହିନ୍ଦୀ ଏବଂ ଇଂରାଜୀ ଭାଷାକୁ ସପୋର୍ଟ କରାଯିବ। Action items fulfill କରିବା।",
+      "status": "Pending",
+      "timestamp": "00:01"
+    },
+    {
+      "assignee": "Person 1",
+      "task": "Agreed. Person 1 will handle the deployment and Person 2 will manage API integration by tomorrow.",
+      "status": "Pending",
+      "timestamp": "00:02"
+    }
+  ],
+  "transcript": [
+    {
+      "speaker": "Person 1",
+      "start": 0.0,
+      "end": 0.75,
+      "text": "Welcome everyone to today's project review meeting. We will discuss system design and action items.",
+      "language": "English",
+      "confidence": 0.95
+    },
+    {
+      "speaker": "Person 1",
+      "start": 0.78,
+      "end": 1.65,
+      "text": "हम आज वॉइस पाइपलाइन और मल्टीलिंगुअल सपोर्ट पर चर्चा करेंगे। सभी मॉड्यूल्स तैयार हैं।",
+      "language": "Hindi",
+      "confidence": 0.93
+    },
+    {
+      "speaker": "Person 1",
+      "start": 1.68,
+      "end": 2.55,
+      "text": "ଆମର ଏହି ପ୍ରୋଜେକ୍ଟରେ ଓଡ଼ିଆ, ହିନ୍ଦୀ ଏବଂ ଇଂରାଜୀ ଭାଷାକୁ ସପୋର୍ଟ କରାଯିବ। Action items fulfill କରିବା।",
+      "language": "Odia",
+      "confidence": 0.91
+    },
+    {
+      "speaker": "Person 1",
+      "start": 2.58,
+      "end": 3.0,
+      "text": "Agreed. Person 1 will handle the deployment and Person 2 will manage API integration by tomorrow.",
+      "language": "English",
+      "confidence": 0.94
+    }
+  ]
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice MoM AI - Voice-Based Minutes of Meeting Pipeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top Navbar -->
+        <header class="navbar">
+            <div class="brand">
+                <i class="fa-solid fa-microphone-lines brand-icon"></i>
+                <div class="brand-text">
+                    <h1>VoiceMoM <span>AI</span></h1>
+                    <p>Multilingual Meeting Intelligence Pipeline</p>
+                </div>
+            </div>
+            <div class="lang-pills">
+                <span class="badge badge-en"><i class="fa-solid fa-globe"></i> English</span>
+                <span class="badge badge-hi"><i class="fa-solid fa-language"></i> हिन्दी (Hindi)</span>
+                <span class="badge badge-or"><i class="fa-solid fa-om"></i> ଓଡ଼ିଆ (Odia)</span>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Left Sidebar / Upload Section -->
+            <section class="card upload-card">
+                <h2><i class="fa-solid fa-cloud-arrow-up"></i> Upload Meeting Recording</h2>
+                <p class="subtitle">Supports MP3, WAV, M4A, FLAC, MP4, MKV audio & video files.</p>
+                
+                <div class="drop-zone" id="dropZone">
+                    <i class="fa-solid fa-file-audio upload-icon"></i>
+                    <h3>Drag & Drop meeting file here</h3>
+                    <p>or <span class="browse-btn">browse files</span></p>
+                    <input type="file" id="fileInput" accept="audio/*,video/*" hidden>
+                </div>
+
+                <!-- Live Progress Card -->
+                <div class="progress-container hidden" id="progressContainer">
+                    <div class="progress-header">
+                        <span id="currentFileName">file.wav</span>
+                        <span id="progressPercent">0%</span>
+                    </div>
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" id="progressBarFill"></div>
+                    </div>
+                    <p class="stage-text" id="stageText"><i class="fa-solid fa-spinner fa-spin"></i> Initializing pipeline...</p>
+                </div>
+
+                <!-- Recent Jobs List -->
+                <div class="jobs-history">
+                    <h3><i class="fa-solid fa-clock-history"></i> Recent Processed Meetings</h3>
+                    <div class="job-list" id="jobList">
+                        <p class="empty-text">No previous recordings found.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Main Results Section -->
+            <section class="card results-card" id="resultsCard">
+                <!-- Idle Placeholder -->
+                <div class="idle-state" id="idleState">
+                    <i class="fa-solid fa-sliders idle-icon"></i>
+                    <h2>No Meeting Selected</h2>
+                    <p>Upload a recording or select a processed job to view speaker diarization, statistics, and Minutes of Meeting.</p>
+                </div>
+
+                <!-- Active Result Container -->
+                <div class="result-container hidden" id="resultContainer">
+                    <!-- Title Bar & Exports -->
+                    <div class="result-header">
+                        <div>
+                            <h2 id="meetingTitle">Meeting Record</h2>
+                            <span class="file-tag" id="fileTag"><i class="fa-solid fa-file"></i> audio.wav</span>
+                        </div>
+                        <div class="export-group">
+                            <button class="btn btn-export" id="exportPdfBtn"><i class="fa-solid fa-file-pdf"></i> PDF</button>
+                            <button class="btn btn-export" id="exportDocxBtn"><i class="fa-solid fa-file-word"></i> DOCX</button>
+                            <button class="btn btn-export" id="exportJsonBtn"><i class="fa-solid fa-file-code"></i> JSON</button>
+                        </div>
+                    </div>
+
+                    <!-- Audio Media Player & Sync Controller -->
+                    <div class="media-player-box">
+                        <div class="player-info">
+                            <i class="fa-solid fa-circle-play player-icon"></i>
+                            <div>
+                                <h4>Interactive Audio Sync Player</h4>
+                                <p>Click any transcript turn below to jump audio playback to exact timestamp.</p>
+                            </div>
+                        </div>
+                        <audio id="audioPlayer" controls></audio>
+                    </div>
+
+                    <!-- Speaker Statistics Grid -->
+                    <div class="stats-section">
+                        <h3><i class="fa-solid fa-chart-pie"></i> Participant Speaking Statistics</h3>
+                        <div class="speaker-stats-grid" id="speakerStatsGrid">
+                            <!-- Populated dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Tabs: Executive Summary, Key Points, Decisions, Actions, Transcript -->
+                    <div class="tab-bar">
+                        <button class="tab-btn active" data-tab="summaryTab"><i class="fa-solid fa-align-left"></i> Summary</button>
+                        <button class="tab-btn" data-tab="keyPointsTab"><i class="fa-solid fa-list-check"></i> Key Points</button>
+                        <button class="tab-btn" data-tab="decisionsTab"><i class="fa-solid fa-gavel"></i> Decisions</button>
+                        <button class="tab-btn" data-tab="actionsTab"><i class="fa-solid fa-tasks"></i> Action Items</button>
+                        <button class="tab-btn" data-tab="transcriptTab"><i class="fa-solid fa-comments"></i> Transcript</button>
+                    </div>
+
+                    <!-- Tab Contents -->
+                    <div class="tab-content active" id="summaryTab">
+                        <div class="summary-box">
+                            <h4>Executive Summary</h4>
+                            <p id="summaryText">Meeting summary content...</p>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="keyPointsTab">
+                        <div id="keyPointsList" class="key-points-container"></div>
+                    </div>
+
+                    <div class="tab-content" id="decisionsTab">
+                        <div id="decisionsList" class="decisions-container"></div>
+                    </div>
+
+                    <div class="tab-content" id="actionsTab">
+                        <table class="action-table">
+                            <thead>
+                                <tr>
+                                    <th>Assignee</th>
+                                    <th>Task Description</th>
+                                    <th>Timestamp</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="actionTableBody"></tbody>
+                        </table>
+                    </div>
+
+                    <div class="tab-content" id="transcriptTab">
+                        <div class="transcript-list" id="transcriptList"></div>
+                    </div>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
